@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.quoteService.get().subscribe(res => {
-      this.randomQuote = res.body;
+    this.quoteService.getQuote().subscribe(res => {
+      this.randomQuote = res;
     });
   }
 }

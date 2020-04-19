@@ -1,17 +1,22 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const app = express();
 const port = 8000;
 
-app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    })
-);
+var corsOptions = {
+    origin: 'http://localhost:4200',
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 app.get('/', (request, response) => {
     response.json({info: 'RESTful API up and running'})
+});
+
+app.route('/quote').get((req, res) => {
+    res.send({author: 'author ABC', quote: 'quote bla bla'})
 });
 
 app.listen(port, () => {
