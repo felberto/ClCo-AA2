@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Quote} from "../models/Quote";
-import {environment} from "../../environments/environment";
 
 @Injectable()
 export class QuoteService {
@@ -11,6 +10,6 @@ export class QuoteService {
   }
 
   get(): Observable<HttpResponse<Quote>> {
-    return this.http.get<Quote>(environment.SERVER_API_URL + '/quote', {observe: 'response'});
+    return this.http.get<Quote>('https://3qohjrpb94.execute-api.us-east-1.amazonaws.com/default/RequestQuote', {observe: 'response'});
   }
 }
